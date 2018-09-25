@@ -19,8 +19,8 @@ class CreateOrdersTable extends Migration
             $table->foreign('technician_id')->references('id')->on('users');
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users');
-            $table->boolean('is_accepted');
-            $table->boolean('is_completed');
+            $table->date('order_start');
+            $table->date('order_end');
             $table->timestamps();
         });
     }
