@@ -34,6 +34,28 @@ class MateriallistCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
+        ]);
+        $this->crud->addField([
+            "label"=>"Material Category id",
+            "type"=>"select",
+            "name"=>"material_category_id",
+            "entity"=>"materialcategory",
+            "attribute"=>"name",
+            "model"=>"App\Models\Materialcategory"
+        ]); 
+        $this->crud->setColumnDetails('material_category_id',
+            [
+                "label"=>"Material Category id",
+                "type"=>"select",
+                "name"=>"material_category_id",
+                "entity"=>"materialcategory",
+                "attribute"=>"name",
+                "model"=>"App\Models\Materialcategory"
+            ]);
 
         // add asterisk for fields that are required in MateriallistRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

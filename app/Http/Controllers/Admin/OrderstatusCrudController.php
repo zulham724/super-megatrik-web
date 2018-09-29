@@ -34,6 +34,64 @@ class OrderstatusCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"Order id",
+            "type"=>"select",
+            "name"=>"order_id",
+            "entity"=>"order",
+            "attribute"=>"id",
+            "model"=>"App\Models\Order"
+        ]); 
+        $this->crud->setColumnDetails('order_id',
+            [
+                'label'=>'Order',
+                'type'=>'select',
+                'name'=>'order_id',
+                'entity'=>'order',
+                'attribute'=>'id',
+                'model'=>'App\Models\Order'
+            ]);
+        $this->crud->addField([
+            'name'        => 'is_accepted', // the name of the db column
+            'label'       => 'Diterima', // the input label
+            'type'        => 'radio',
+            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                0 => "Belum Diterima",
+                                1 => "Diterima"
+                            ],
+            'inline'      => true, 
+        ]);
+        $this->crud->setColumnDetails('is_accepted',
+            [
+                'name'        => 'is_accepted', // the name of the db column
+                'label'       => 'Diterima', // the input label
+                'type'        => 'radio',
+                'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                    0 => "Belum Diterima",
+                                    1 => "Diterima"
+                                ],
+            ]);
+        $this->crud->addField([
+            'name'        => 'is_completed', // the name of the db column
+            'label'       => 'Status', // the input label
+            'type'        => 'radio',
+            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                0 => "Belum Selesai",
+                                1 => "Selesai"
+                            ],
+            'inline'      => true, 
+        ]);
+        $this->crud->setColumnDetails('is_completed',
+            [
+                'name'        => 'is_completed', // the name of the db column
+                'label'       => 'Status', // the input label
+                'type'        => 'radio',
+                'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                    0 => "Belum Selesai",
+                                    1 => "Selesai"
+                                ],
+            ]);
+
 
         // add asterisk for fields that are required in OrderstatusRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

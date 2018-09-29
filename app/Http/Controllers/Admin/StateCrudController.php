@@ -34,6 +34,11 @@ class StateCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
+        ]);
 
         // add asterisk for fields that are required in StateRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

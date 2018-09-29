@@ -34,6 +34,76 @@ class LocationCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"User id",
+            "type"=>"select",
+            "name"=>"user_id",
+            "entity"=>"user",
+            "attribute"=>"name",
+            "model"=>"App\Models\User"
+        ]); 
+        $this->crud->setColumnDetails('user_id',
+            [
+                "label"=>"User id",
+                "type"=>"select",
+                "name"=>"user_id",
+                "entity"=>"user",
+                "attribute"=>"name",
+                "model"=>"App\Models\User"
+            ]);
+        $this->crud->addField([
+            "label"=>"State id",
+            "type"=>"select",
+            "name"=>"state_id",
+            "entity"=>"state",
+            "attribute"=>"name",
+            "model"=>"App\Models\State"
+        ]); 
+        $this->crud->setColumnDetails('state_id',
+            [
+                "label"=>"State id",
+                "type"=>"select",
+                "name"=>"state_id",
+                "entity"=>"state",
+                "attribute"=>"name",
+                "model"=>"App\Models\State"
+            ]);
+        $this->crud->addField([
+            "label"=>"City id",
+            "type"=>"select",
+            "name"=>"city_id",
+            "entity"=>"city",
+            "attribute"=>"name",
+            "model"=>"App\Models\City"
+        ]); 
+        $this->crud->setColumnDetails('city_id',
+            [
+                "label"=>"City id",
+                "type"=>"select",
+                "name"=>"city_id",
+                "entity"=>"city",
+                "attribute"=>"name",
+                "model"=>"App\Models\City"
+            ]);
+        $this->crud->addField([
+            "label"=>"District id",
+            "type"=>"select",
+            "name"=>"district_id",
+            "entity"=>"district",
+            "attribute"=>"name",
+            "model"=>"App\Models\District"
+        ]); 
+        $this->crud->setColumnDetails('district_id',
+            [
+                "label"=>"District id",
+                "type"=>"select",
+                "name"=>"district_id",
+                "entity"=>"district",
+                "attribute"=>"name",
+                "model"=>"App\Models\District"
+            ]);
+
+
 
         // add asterisk for fields that are required in LocationRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

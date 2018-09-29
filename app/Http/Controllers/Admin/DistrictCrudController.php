@@ -34,6 +34,30 @@ class DistrictCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"City id",
+            "type"=>"select",
+            "name"=>"city_id",
+            "entity"=>"city",
+            "attribute"=>"name",
+            "model"=>"App\Models\City"
+        ]);
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
+        ]);
+
+
+        $this->crud->setColumnDetails('city_id',
+            [
+                'label'=>'City Name',
+                'type'=>'select',
+                'name'=>'city_id',
+                'entity'=>'city',
+                'attribute'=>'name',
+                'model'=>'App\Models\City'
+            ]);
 
         // add asterisk for fields that are required in DistrictRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

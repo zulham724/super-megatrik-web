@@ -34,6 +34,35 @@ class BiodataCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"User id",
+            "type"=>"select",
+            "name"=>"user_id",
+            "entity"=>"user",
+            "attribute"=>"name",
+            "model"=>"App\Models\User"
+        ]); 
+        $this->crud->addField([
+            'name' => 'birth_of_date',
+            'label' => 'Birth of Date',
+            'type' => 'date_picker',
+            'date_picker_options' => [
+                'todayBtn' => true,
+                'format' => 'dd-mm-yyyy',
+                // 'language' => 'fr'
+            ],
+        ]); 
+
+
+        $this->crud->setColumnDetails('user_id',
+            [
+                'label'=>'User',
+                'type'=>'select',
+                'name'=>'user_id',
+                'entity'=>'user',
+                'attribute'=>'name',
+                'model'=>'App\Models\User'
+            ]);
 
         // add asterisk for fields that are required in BiodataRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

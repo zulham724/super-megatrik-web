@@ -34,6 +34,13 @@ class Material extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function order(){
+        return $this->belongsTo('App\Models\Order');
+    }
+    
+    public function materiallist(){
+        return $this->belongsTo('App\Models\Materiallist','material_list_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -34,6 +34,18 @@ class Location extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function state(){
+        return $this->belongsTo('App\Models\State');
+    }
+    public function city(){
+        return $this->belongsTo('App\Models\City');
+    }
+    public function district(){
+        return $this->belongsTo('App\Models\District');
+    }
 
     /*
     |--------------------------------------------------------------------------

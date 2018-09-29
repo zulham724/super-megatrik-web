@@ -34,6 +34,13 @@ class Service extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function order(){
+        return $this->belongsTo('App\Models\Order');
+    }
+    
+    public function servicelist(){
+        return $this->belongsTo('App\Models\Servicelist','service_list_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

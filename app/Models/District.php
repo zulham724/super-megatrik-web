@@ -34,6 +34,10 @@ class District extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function city(){
+        return $this->belongsTo('App\Models\City');
+    }
+
 
     /*
     |--------------------------------------------------------------------------

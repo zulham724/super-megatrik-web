@@ -34,6 +34,9 @@ class Materiallist extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function materialcategory(){
+        return $this->belongsTo('App\Models\Materialcategory','material_category_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

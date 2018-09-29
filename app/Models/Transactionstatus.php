@@ -34,6 +34,9 @@ class Transactionstatus extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function transaction(){
+        return $this->belongsTo('App\Models\Transaction');
+    }
 
     /*
     |--------------------------------------------------------------------------

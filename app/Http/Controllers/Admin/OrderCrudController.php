@@ -34,6 +34,60 @@ class OrderCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"Technician id",
+            "type"=>"select",
+            "name"=>"technician_id",
+            "entity"=>"technician",
+            "attribute"=>"name",
+            "model"=>"App\Models\User"
+        ]); 
+        $this->crud->setColumnDetails('technician_id',
+            [
+                "label"=>"Technician id",
+                "type"=>"select",
+                "name"=>"technician_id",
+                "entity"=>"technician",
+                "attribute"=>"name",
+                "model"=>"App\Models\User"
+            ]);
+        $this->crud->addField([
+            "label"=>"Customer id",
+            "type"=>"select",
+            "name"=>"customer_id",
+            "entity"=>"customer",
+            "attribute"=>"name",
+            "model"=>"App\Models\User"
+        ]); 
+        $this->crud->setColumnDetails('customer_id',
+            [
+                "label"=>"Customer id",
+                "type"=>"select",
+                "name"=>"customer_id",
+                "entity"=>"customer",
+                "attribute"=>"name",
+                "model"=>"App\Models\User"
+            ]);
+        $this->crud->addField([
+            'name' => 'order_start',
+            'label' => 'Order Start',
+            'type' => 'date_picker',
+            'date_picker_options' => [
+                'todayBtn' => true,
+                'format' => 'dd-mm-yyyy',
+                // 'language' => 'fr'
+            ],
+        ]); 
+        $this->crud->addField([
+            'name' => 'order_end',
+            'label' => 'Order End',
+            'type' => 'date_picker',
+            'date_picker_options' => [
+                'todayBtn' => true,
+                'format' => 'dd-mm-yyyy',
+                // 'language' => 'fr'
+            ],
+        ]); 
 
         // add asterisk for fields that are required in OrderRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

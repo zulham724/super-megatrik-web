@@ -34,6 +34,11 @@ class RoleCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
+        ]); 
 
         // add asterisk for fields that are required in RoleRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

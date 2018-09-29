@@ -34,6 +34,9 @@ class Servicelist extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function servicecategory(){
+        return $this->belongsTo('App\Models\Servicecategory','service_category_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

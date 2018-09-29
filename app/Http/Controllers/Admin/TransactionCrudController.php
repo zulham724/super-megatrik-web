@@ -34,6 +34,23 @@ class TransactionCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"Order id",
+            "type"=>"select",
+            "name"=>"order_id",
+            "entity"=>"order",
+            "attribute"=>"id",
+            "model"=>"App\Models\Order"
+        ]); 
+        $this->crud->setColumnDetails('order_id',
+            [
+                "label"=>"Order id",
+                "type"=>"select",
+                "name"=>"order_id",
+                "entity"=>"order",
+                "attribute"=>"id",
+                "model"=>"App\Models\Order"
+            ]);
 
         // add asterisk for fields that are required in TransactionRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

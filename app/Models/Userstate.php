@@ -34,6 +34,12 @@ class Userstate extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function state(){
+        return $this->belongsTo('App\Models\State');
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -34,6 +34,13 @@ class Order extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function technician(){
+        return $this->belongsTo('App\Models\User','technician_id','id');
+    }
+
+    public function customer(){
+        return $this->belongsTo('App\Models\User','customer_id','id');
+    }
 
     /*
     |--------------------------------------------------------------------------

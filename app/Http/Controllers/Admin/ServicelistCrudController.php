@@ -34,6 +34,28 @@ class ServicelistCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'textarea'
+        ]);
+        $this->crud->addField([
+            "label"=>"Service Category id",
+            "type"=>"select",
+            "name"=>"service_category_id",
+            "entity"=>"servicecategory",
+            "attribute"=>"name",
+            "model"=>"App\Models\Servicecategory"
+        ]); 
+        $this->crud->setColumnDetails('service_category_id',
+            [
+                "label"=>"Service Category id",
+                "type"=>"select",
+                "name"=>"service_category_id",
+                "entity"=>"servicecategory",
+                "attribute"=>"name",
+                "model"=>"App\Models\Servicecategory"
+            ]);
 
         // add asterisk for fields that are required in ServicelistRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

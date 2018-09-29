@@ -17,8 +17,8 @@ class CreateLocationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('latitude');
-            $table->integer('longitude');
+            $table->integer('latitude')->default(0);
+            $table->integer('longitude')->default(0);
             $table->unsignedInteger('state_id');
             $table->foreign('state_id')->references('id')->on('states');
             $table->unsignedInteger('city_id');

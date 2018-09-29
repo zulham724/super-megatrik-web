@@ -34,7 +34,9 @@ class State extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function cities(){
+        return $this->hasMany('App\Models\City');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

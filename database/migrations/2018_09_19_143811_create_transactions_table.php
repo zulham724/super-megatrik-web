@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->integer('transaction_number');
+            $table->string('transaction_number');
             $table->integer('total');
             $table->timestamps();
         });

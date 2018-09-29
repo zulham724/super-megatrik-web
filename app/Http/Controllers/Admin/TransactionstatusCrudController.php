@@ -34,6 +34,43 @@ class TransactionstatusCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         $this->crud->setFromDb();
+        $this->crud->addField([
+            "label"=>"Transaction id",
+            "type"=>"select",
+            "name"=>"transaction_id",
+            "entity"=>"transaction",
+            "attribute"=>"id",
+            "model"=>"App\Models\Transaction"
+        ]); 
+        $this->crud->setColumnDetails('transaction_id',
+            [
+                "label"=>"Transaction id",
+                "type"=>"select",
+                "name"=>"transaction_id",
+                "entity"=>"transaction",
+                "attribute"=>"id",
+                "model"=>"App\Models\Transaction"
+            ]);
+        $this->crud->addField([
+            'name'        => 'is_paid', // the name of the db column
+            'label'       => 'Dibayar', // the input label
+            'type'        => 'radio',
+            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                0 => "Belum Dibayar",
+                                1 => "Dibayar"
+                            ],
+            'inline'      => true, 
+        ]);
+        $this->crud->setColumnDetails('is_paid',
+            [
+                'name'        => 'is_paid', // the name of the db column
+                'label'       => 'Dibayar', // the input label
+                'type'        => 'radio',
+                'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+                                    0 => "Belum Dibayar",
+                                    1 => "Dibayar"
+                                ],
+            ]);
 
         // add asterisk for fields that are required in TransactionstatusRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

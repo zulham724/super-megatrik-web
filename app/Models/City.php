@@ -34,7 +34,9 @@ class City extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function state(){
+        return $this->belongsTo('App\Models\State');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
