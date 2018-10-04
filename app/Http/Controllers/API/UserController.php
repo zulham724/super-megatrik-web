@@ -57,6 +57,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->fill($request->all());
         $user->save();
+        return response()->json($user);
     }
 
     /**

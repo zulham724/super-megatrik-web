@@ -57,6 +57,7 @@ class OrderstatusController extends Controller
         $orderstatus = Orderstatus::find($id);
         $orderstatus->fill($request->all());
         $orderstatus->save();
+        return response()->json($orderstatus);
     }
 
     /**

@@ -57,6 +57,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->fill($request->all());
         $service->save();
+        return response()->json($service);
     }
 
     /**

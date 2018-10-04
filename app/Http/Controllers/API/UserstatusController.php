@@ -57,6 +57,7 @@ class UserstatusController extends Controller
         $userstatus = Userstatus::find($id);
         $userstatus->fill($request->all());
         $userstatus->save();
+        return response()->json($userstatus);
     }
 
     /**

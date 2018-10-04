@@ -25,7 +25,7 @@
             <li><a href="{{ route('backpack.auth.register') }}">{{ trans('backpack::base.register') }}</a></li>
             @endif
         @else
-            <li><a href="{{ route('backpack.auth.logout') }}"><i class="fa fa-btn fa-sign-out"></i> {{ trans('backpack::base.logout') }}</a></li>
+            <li><a href="{{ route('backpack.auth.logout') }}"><i class="fa fa-btn fa-sign-out-alt"></i> {{ trans('backpack::base.logout') }}</a></li>
         @endif
        @endif
        <!-- ========== End of top menu right items ========== -->

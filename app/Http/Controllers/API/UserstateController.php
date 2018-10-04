@@ -57,6 +57,7 @@ class UserstateController extends Controller
         $userstate = Userstate::find($id);
         $userstate->fill($request->all());
         $userstate->save();
+        return response()->json($userstate);
     }
 
     /**

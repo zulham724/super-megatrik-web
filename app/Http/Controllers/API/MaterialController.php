@@ -57,6 +57,7 @@ class MaterialController extends Controller
         $material = Material::find($id);
         $material->fill($request->all());
         $material->save();
+        return response()->json($material);
     }
 
     /**

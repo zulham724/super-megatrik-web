@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class District extends Model
+class Contentlist extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class District extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'districts';
+    protected $table = 'content_lists';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -34,10 +34,9 @@ class District extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function city(){
-        return $this->belongsTo('App\Models\City','city_id','id');
+    public function contentcategory(){
+        return $this->belongsTo('App\Models\Contentcategory','content_category_id','id');
     }
-
 
     /*
     |--------------------------------------------------------------------------

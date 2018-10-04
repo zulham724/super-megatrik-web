@@ -57,6 +57,7 @@ class BiodataController extends Controller
         $biodata = Biodata::find($id);
         $biodata->fill($request->all());
         $biodata->save();
+        return response()->json($biodata);
     }
 
     /**

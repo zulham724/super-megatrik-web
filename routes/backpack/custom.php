@@ -31,4 +31,7 @@ Route::group([
     CRUD::resource('material', 'MaterialCrudController');
     CRUD::resource('transactionstatus', 'TransactionstatusCrudController');
     CRUD::resource('transaction', 'TransactionCrudController');
+    CRUD::resource('contentcategory', 'ContentcategoryCrudController');
+    CRUD::resource('contentlist', 'ContentlistCrudController');
+    CRUD::resource('content', 'ContentCrudController');
 }); // this should be the absolute last line of this file

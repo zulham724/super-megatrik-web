@@ -57,6 +57,7 @@ class RoleController extends Controller
         $role = Role::find($id);
         $role->fill($request->all());
         $role->save();
+        return response()->json($role);
     }
 
     /**

@@ -57,6 +57,7 @@ class DistrictController extends Controller
         $district = District::find($id);
         $district->fill($request->all());
         $district->save();
+        return response()->json($district);
     }
 
     /**

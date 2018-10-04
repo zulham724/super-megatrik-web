@@ -39,6 +39,9 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		"transactionstatuses"=>"TransactionstatusController",
 		"userstates"=>"UserstateController",
 		"userstatuses"=>"UserstatusController",
+		"content"=>"ContentController",
+		"contentcategory"=>"ContentcategoryController",
+		"contentlist"=>"ContentlistController",
 
 	]);
 });

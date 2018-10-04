@@ -57,6 +57,7 @@ class LocationController extends Controller
         $location = Location::find($id);
         $location->fill($request->all());
         $location->save();
+        return response()->json($location);
     }
 
     /**

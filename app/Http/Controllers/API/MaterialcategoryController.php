@@ -57,6 +57,7 @@ class MaterialcategoryController extends Controller
         $materialcategory = Materialcategory::find($id);
         $materialcategory->fill($request->all());
         $materialcategory->save();
+        return response()->json($materialcategory);
     }
 
     /**

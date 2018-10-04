@@ -57,6 +57,7 @@ class MateriallistController extends Controller
         $materiallist = Materiallist::find($id);
         $materiallist->fill($request->all());
         $materiallist->save();
+        return response()->json($materiallist);
     }
 
     /**

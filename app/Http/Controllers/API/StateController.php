@@ -57,6 +57,7 @@ class StateController extends Controller
         $state = State::find($id);
         $state->fill($request->all());
         $state->save();
+        return response()->json($state);
     }
 
     /**

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use App\Models\Contentlist;
 
-class OrderController extends Controller
+class ContentlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::get();
-        return response()->json($orders);
+        $contentlists = Contentlist::get();
+        return response()->json($contentlists);
     }
 
     /**
@@ -27,10 +27,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = new Order;
-        $order->fill($request->all());
-        $order->save();
-        return response()->json($order);
+        $contentlist = new Contentlist;
+        $contentlist->fill($request->all());
+        $contentlist->save();
+        return response()->json($contentlist);
     }
 
     /**
@@ -41,8 +41,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::find($id);
-        return response()->json($order);
+        $contentlist = Contentlist::find($id);
+        return response()->json($contentlist);
     }
 
     /**
@@ -54,11 +54,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::find($id);
-        $order->fill($request->all());
-        $order->save();
-        return response()->json($order);
-
+        $contentlist = Contentlist::find($id);
+        $contentlist->fill($request->all());
+        $contentlist->save();
+        return response()->json($contentlist);
     }
 
     /**
@@ -69,7 +68,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::find($id)->delete();
-        return response()->json($order);
+        $contentlist = Contentlist::find($id)->delete();
+        return response()->json($contentlist);
     }
 }

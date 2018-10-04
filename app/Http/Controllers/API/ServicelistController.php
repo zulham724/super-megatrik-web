@@ -57,6 +57,7 @@ class ServicelistController extends Controller
         $servicelist = Servicelist::find($id);
         $servicelist->fill($request->all());
         $servicelist->save();
+        return response()->json($servicelist);
     }
 
     /**

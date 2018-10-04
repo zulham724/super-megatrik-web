@@ -57,6 +57,7 @@ class ServicecategoryController extends Controller
         $servicecategory = Servicecategory::find($id);
         $servicecategory->fill($request->all());
         $servicecategory->save();
+        return response()->json($servicecategory);
     }
 
     /**

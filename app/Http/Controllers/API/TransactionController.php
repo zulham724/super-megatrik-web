@@ -57,6 +57,7 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         $transaction->fill($request->all());
         $transaction->save();
+        return response()->json($transaction);
     }
 
     /**

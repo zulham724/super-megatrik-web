@@ -57,6 +57,7 @@ class TransactionstatusController extends Controller
         $transactionstatus = Transactionstatus::find($id);
         $transactionstatus->fill($request->all());
         $transactionstatus->save();
+        return response()->json($transactionstatus);
     }
 
     /**

@@ -57,6 +57,7 @@ class StatusController extends Controller
         $status = Status::find($id);
         $status->fill($request->all());
         $status->save();
+        return response()->json($status);
     }
 
     /**
