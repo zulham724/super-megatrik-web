@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('/clients','API\ClientController');
+
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::apiResources([
 		"users"=>"UserController",
@@ -39,9 +41,9 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		"transactionstatuses"=>"TransactionstatusController",
 		"userstates"=>"UserstateController",
 		"userstatuses"=>"UserstatusController",
-		"content"=>"ContentController",
-		"contentcategory"=>"ContentcategoryController",
-		"contentlist"=>"ContentlistController",
+		"contents"=>"ContentController",
+		"contentcategories"=>"ContentcategoryController",
+		"contentlists"=>"ContentlistController",
 
 	]);
 });
