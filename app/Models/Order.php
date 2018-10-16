@@ -41,6 +41,12 @@ class Order extends Model
     public function customer(){
         return $this->belongsTo('App\Models\User','customer_id','id');
     }
+    public function services(){
+        return $this->hasMany('App\Models\Service');
+    }
+    public function materials(){
+        return $this->hasMany('App\Models\Material');
+    }
 
     /*
     |--------------------------------------------------------------------------

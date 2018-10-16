@@ -29,7 +29,11 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/') }}/dist/css/skins/_all-skins.min.css">
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/') }}/plugins/pace/pace.min.css">
+
     <link rel="stylesheet" href="{{ asset('vendor/backpack/pnotify/pnotify.custom.min.css') }}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -100,9 +104,9 @@
 
         <!-- Main content -->
         <section class="content">
-
+          <div id='app'>
           @yield('content')
-
+          </div>
         </section>
         <!-- /.content -->
       </div>
@@ -120,13 +124,17 @@
     <!-- ./wrapper -->
 
 
-    @yield('before_scripts')
-    @stack('before_scripts')
 
     <!-- jQuery 2.2.3 -->
     <script src="{{ asset('vendor/adminlte') }}/bower_components/jquery/dist/jquery.min.js"></script>
+    @yield('before_scripts')
+    @stack('before_scripts')
     {{-- <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.3.min.js"><\/script>')</script> --}}
+
+    <!-- ChartJS -->
+    <script src="{{ asset('vendor/adminlte') }}/bower_components/chart.js/Chart.js"></script>
+
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset('vendor/adminlte') }}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/plugins/pace/pace.min.js"></script>
@@ -186,5 +194,6 @@
 
     <!-- JavaScripts -->
     {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

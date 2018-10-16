@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::get();
+        $orders = Order::with('customer','technician')->get();
         return response()->json($orders);
     }
 
@@ -70,6 +70,8 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::find($id)->delete();
-        return response()->json($order);
+        return response()->json([
+            'pesan'=>'berhasil delete log'
+        ]);
     }
 }
