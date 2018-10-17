@@ -16,10 +16,11 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
             $table->string('transaction_number');
             $table->integer('total');
             $table->timestamps();
+            
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

@@ -16,11 +16,13 @@ class CreateUserHasStatesTable extends Migration
         Schema::create('user_has_states', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('state_id');
-            $table->foreign('state_id')->references('id')->on('states');
             $table->boolean('is_active');
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('state_id')->references('id')->on('states');
         });
     }
 

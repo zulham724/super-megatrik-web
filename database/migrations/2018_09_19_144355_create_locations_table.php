@@ -16,16 +16,17 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('latitude')->default(0);
             $table->integer('longitude')->default(0);
             $table->unsignedInteger('state_id');
-            $table->foreign('state_id')->references('id')->on('states');
             $table->unsignedInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
             $table->unsignedInteger('district_id');
-            $table->foreign('district_id')->references('id')->on('districts');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('state_id')->references('id')->on('states');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('district_id')->references('id')->on('districts');
         });
     }
 

@@ -16,11 +16,12 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('content_list_id');
-            $table->foreign('content_list_id')->references('id')->on('content_categories');
             $table->string('name');
             $table->string('description');
             $table->string('image');
             $table->timestamps();
+            
+            $table->foreign('content_list_id')->references('id')->on('content_lists');
         });
     }
 

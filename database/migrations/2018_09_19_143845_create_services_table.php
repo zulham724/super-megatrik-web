@@ -16,10 +16,11 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
             $table->unsignedInteger('service_list_id');
-            $table->foreign('service_list_id')->references('id')->on('service_lists');
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('service_list_id')->references('id')->on('service_lists');
         });
     }
 

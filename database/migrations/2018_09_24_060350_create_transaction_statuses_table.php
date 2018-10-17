@@ -16,9 +16,10 @@ class CreateTransactionStatusesTable extends Migration
         Schema::create('transaction_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('transaction_id');
-            $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->boolean('is_paid');
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('id')->on('transactions');
         });
     }
 

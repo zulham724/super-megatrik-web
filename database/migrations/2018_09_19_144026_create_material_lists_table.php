@@ -16,11 +16,12 @@ class CreateMaterialListsTable extends Migration
         Schema::create('material_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('material_category_id');
-            $table->foreign('material_category_id')->references('id')->on('material_categories');
             $table->string('name');
             $table->string('description');
             $table->integer('price');
             $table->timestamps();
+
+            $table->foreign('material_category_id')->references('id')->on('material_categories');
         });
     }
 

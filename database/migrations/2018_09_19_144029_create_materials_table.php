@@ -16,10 +16,11 @@ class CreateMaterialsTable extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
             $table->unsignedInteger('material_list_id');
-            $table->foreign('material_list_id')->references('id')->on('material_lists');
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('material_list_id')->references('id')->on('material_lists');
         });
     }
 

@@ -16,11 +16,12 @@ class CreateServiceListsTable extends Migration
         Schema::create('service_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('service_category_id');
-            $table->foreign('service_category_id')->references('id')->on('service_categories');
             $table->string('name');
             $table->string('description');
             $table->integer('price');
             $table->timestamps();
+
+            $table->foreign('service_category_id')->references('id')->on('service_categories');
         });
     }
 
