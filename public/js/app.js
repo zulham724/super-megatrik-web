@@ -67062,18 +67062,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-  mounted: function mounted() {
-    console.log('Component mounted.');
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [{
-        label: 'GitHub Commits',
-        backgroundColor: '#f87979',
-        data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-      }]
-    });
-  }
+    extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
+    props: ['year'],
+    data: function data() {
+        return {
+            orders: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        console.log('Component mounted.');
+        axios.get('/api/orders').then(function (res) {
+            $.each(res.data, function (o, order) {
+                var dt = new Date(order.created_at);
+                var mnth = dt.getMonth();
+                // if(dt.getYear() == this.year){
+                _this.orders[mnth] += 1;
+                // }
+            });
+            _this.renderChart({
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'GitHub Commits',
+                    backgroundColor: '#f87979',
+                    data: _this.orders
+                }]
+            });
+        });
+    }
 });
 
 /***/ }),
