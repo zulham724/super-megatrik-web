@@ -12,6 +12,8 @@ window.Vue = require('vue');
 // import 'datepicker';
 import 'datatables.net';
 window.swal = require('sweetalert2');
+import VueCharts from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
 
 
 /**
@@ -23,6 +25,7 @@ window.swal = require('sweetalert2');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('service-component', require('./components/ServiceComponent.vue'));
 Vue.component('material-component', require('./components/MaterialComponent.vue'));
+Vue.component('chart-component', require('./components/ChartComponent.vue'));
 
 const app = new Vue({
     el: '#app'

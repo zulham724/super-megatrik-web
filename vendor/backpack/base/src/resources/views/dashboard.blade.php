@@ -37,7 +37,7 @@
       <span class="info-box-icon bg-red"><i class="fa fa-child"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Jumlah Customer</span>
+        <span class="info-box-text">Jumlah Pelanggan</span>
         <span class="info-box-number">5.387</span>
       </div>
       <!-- /.info-box-content -->
@@ -92,7 +92,7 @@
       </div>
       <div class="box-body">
         <div class="chart">
-          <canvas id="myChart" ></canvas>
+          <chart-component></chart-component>
         </div>
         <table class="table table-bordered table-striped datatable">
           <thead>
@@ -111,44 +111,11 @@
 </div>
 @endsection
 @section('before_scripts')
-<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <script type="text/javascript">
       // on ready function ES6
       $(()=>{
         $('.datatable').DataTable();
-      });
-
-      var ctx = document.getElementById("myChart").getContext('2d');
-      var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                  datasets: [{
-                label: 'Bar Dataset',
-                data: [10, 20, 30, 40, 50, 30, 20, 30, 50, 50, 60, 50],
-                borderColor:'rgb(255, 99, 132)',
-                backgroundColor:'rgba(255, 99, 132, 0.2)'
-                  }, {
-                label: 'Line Dataset',
-                data: [10, 20, 30, 40, 50, 30, 20, 30, 50, 50, 60, 50],
-                borderColor:'rgb(54, 162, 235)',
-                fill: false,
-
-                // Changes this dataset to become a line
-                type: 'line'
-              }],
-          labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-          },
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero:true
-                      }
-                  }]
-              }
-          }
+        
       });
       
 </script>
