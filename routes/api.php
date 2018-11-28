@@ -17,9 +17,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/clients','API\ClientController');
+// Route::resource('/clients','API\ClientController');
+
+Route::resource('/oauthclients', 'API\OauthClientController');
+Route::post('register','API\UserController@store');
 
 Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
+
+	Route::get('users/{id}/{relation}','UserController@show');
+
+	// Route::get('roles/{id}/{relation}/$filter','UserController@show');
+
 	Route::apiResources([
 		"users"=>"UserController",
 		"roles"=>"RoleController",

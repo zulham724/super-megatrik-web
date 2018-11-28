@@ -19,6 +19,7 @@ class CreateContentsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image');
+            $table->string('redirect');
             $table->timestamps();
             
             $table->foreign('content_list_id')->references('id')->on('content_lists');

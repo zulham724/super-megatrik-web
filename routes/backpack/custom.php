@@ -34,4 +34,5 @@ Route::group([
     CRUD::resource('contentcategory', 'ContentcategoryCrudController');
     CRUD::resource('contentlist', 'ContentlistCrudController');
     CRUD::resource('content', 'ContentCrudController');
+    CRUD::resource('oauthclient', 'OauthclientCrudController');
 }); // this should be the absolute last line of this file

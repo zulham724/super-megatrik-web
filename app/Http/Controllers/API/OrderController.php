@@ -39,9 +39,19 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$cityname)
     {
-        $order = Order::find($id);
+        $order = Order::with('order_statuses')->find($id);
+        if($order->count() == 0){
+            $coor = Role::with(['users.location.city'=>function($query)use($cityname){
+                $query->where('name',$cityname)->first();
+            }])
+            ->whereHas('users.location.city',function()use($cityname){
+                $query->where('name',$cityname)->first();
+            })
+            ->find(2);
+            return response()->json($coor);
+        }
         return response()->json($order);
     }
 

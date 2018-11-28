@@ -62,3 +62,4 @@
 		<li><a href='{{ backpack_url('contentcategory') }}'> <span>Content Categories</span></a></li>
     </ul>
 </li>
+<li><a href='{{ backpack_url('oauthclient') }}'><i class='fa fa-tag'></i> <span>Oauth Client</span></a></li>

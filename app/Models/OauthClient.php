@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class User extends Model
+class OauthClient extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class User extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'users';
+    protected $table = 'oauth_clients';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    // protected $guarded = ['id'];
+    protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,13 +34,6 @@ class User extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function role(){
-        return $this->belongsTo('App\Models\Role');
-    }
-
-    public function orders(){
-        return $this->hasMany('App\Models\Order','id','customer_id');
-    }
 
     /*
     |--------------------------------------------------------------------------
