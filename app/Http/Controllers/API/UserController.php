@@ -74,7 +74,8 @@ class UserController extends Controller
 
     public function drivers($id){
         $driver = User::
-        with(['order.order_status'=>function($query){
+        with('order.customer')
+        ->with(['order.order_status'=>function($query){
             $query->where('is_completed',0);
         }])
         ->whereHas('order.order_status',function($query){
