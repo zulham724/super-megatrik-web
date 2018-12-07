@@ -68,7 +68,6 @@ class OrderController extends Controller
         $order->fill($request->all());
         $order->save();
         return response()->json($order);
-
     }
 
     /**
