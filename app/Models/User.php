@@ -65,4 +65,7 @@ class User extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    // public function setPasswordAttribute($value){
+    //     return $attributes['password'] = bcrypt($value);
+    // }
 }
