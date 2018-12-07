@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Userstatus extends Model
+class UserStatus extends Model
 {
     use CrudTrait;
 

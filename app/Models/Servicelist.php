@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Servicelist extends Model
+class ServiceList extends Model
 {
     use CrudTrait;
 
