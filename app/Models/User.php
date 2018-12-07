@@ -39,13 +39,13 @@ class User extends Model
     }
 
     // user yang memiliki banyak order hanya customer
-    public function orders(){
+    public function customer_orders(){
         return $this->hasMany('App\Models\Order','customer_id','id');
     }
 
     // user yang memiliki 1 order hanya technician
-    public function order(){
-        return $this->hasOne('App\Models\Order','technician_id','id');
+    public function technician_orders(){
+        return $this->hasMany('App\Models\Order','technician_id','id');
     }
 
     /*

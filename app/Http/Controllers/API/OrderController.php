@@ -30,6 +30,11 @@ class OrderController extends Controller
         $order = new Order;
         $order->fill($request->all());
         $order->save();
+
+        $order_status = new OrderStatus;
+        $order_status->order_id = $order->id;
+        $order_status->save();
+
         return response()->json($order);
     }
 
@@ -82,5 +87,28 @@ class OrderController extends Controller
         return response()->json([
             'pesan'=>'berhasil delete log'
         ]);
+    }
+
+    public function notaccepted(){
+        $orders = Order::with('customer')
+        ->with(['order_status'=>function($query){
+            $query->where('is_accepted',0);
+        }])
+        ->whereHas('order_status',function($query){
+            $query->where('is_accepted',0);
+        })
+        ->get();
+        return response()->json($orders);
+    }
+
+    public function accept(Request $request,$id){
+        $order = Order::with('order_status')->find($id);
+        if($order->order_status->is_accepted == 0){
+            $order->fill($request->all());
+            $order->update();
+            return response()->json($order);
+        } else {
+            return abort(404);
+        }
     }
 }

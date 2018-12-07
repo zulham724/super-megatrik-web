@@ -16,8 +16,8 @@ class CreateOrderStatusesTable extends Migration
         Schema::create('order_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('order_id');
-            $table->boolean('is_accepted');
-            $table->boolean('is_completed');
+            $table->boolean('is_accepted')->default(0);
+            $table->boolean('is_completed')->default(0);
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');

@@ -55,5 +55,9 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 
 	]);
 
-	Route::get('drivers/{id}/ordernotcompleted','UserController@drivers');
+	Route::get('drivers/{id}/ordernotcompleted','DriverController@ordernotcompleted');
+	Route::get('drivers/{id}/ordercompleted','DriverController@ordercompleted');
+
+	Route::get('order/notaccepted','OrderController@notaccepted');
+	Route::post('order/accept','OrderController@accept');
 });
