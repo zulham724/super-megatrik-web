@@ -71,4 +71,17 @@ class UserController extends Controller
         $user = User::find($id)->delete();
         return response()->json($user);
     }
+
+    public function drivers($id){
+        $driver = User::
+        with(['order.order_status'=>function($query){
+            $query->where('is_completed',0);
+        }])
+        ->whereHas('order.order_status',function($query){
+           $query->where('is_completed',0); 
+        })
+        ->find($id);
+
+        return response()->json($driver);
+    }
 }

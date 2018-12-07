@@ -19,11 +19,17 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('customer_id');
             $table->date('order_start');
             $table->date('order_end');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
+            $table->text('address')->nullable();
+            $table->text('description')->nullable();
+            $table->string('city_name')->nullable();
             $table->timestamps();
 
 
             $table->foreign('technician_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('users');
+
         });
     }
 

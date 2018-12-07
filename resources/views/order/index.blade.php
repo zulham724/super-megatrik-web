@@ -61,7 +61,7 @@
       });
 
       // Edit record
-      $('.customdatatable').on('click', 'a.btn_edit', function (e) {
+      table.on('click', 'a.btn_edit', function (e) {
           e.preventDefault();
    
           let data = table.row($(this).parents('tr')).data();
@@ -69,7 +69,7 @@
       } );
    
       // Delete a record
-      $('.customdatatable').on('click', 'a.btn_delete', function (e) {
+      table.on('click', 'a.btn_delete', function (e) {
           e.preventDefault();
           let data = table.row($(this).parents('tr')).data();
           destroy(data.id);

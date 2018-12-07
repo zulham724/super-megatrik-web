@@ -18,8 +18,8 @@ class CreateContentsTable extends Migration
             $table->unsignedInteger('content_list_id');
             $table->string('name');
             $table->string('description');
-            $table->string('image');
-            $table->string('redirect');
+            $table->string('image')->nullable();
+            $table->string('redirect')->nullable();
             $table->timestamps();
             
             $table->foreign('content_list_id')->references('id')->on('content_lists');

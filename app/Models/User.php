@@ -38,8 +38,14 @@ class User extends Model
         return $this->belongsTo('App\Models\Role');
     }
 
+    // user yang memiliki banyak order hanya customer
     public function orders(){
-        return $this->hasMany('App\Models\Order','id','customer_id');
+        return $this->hasMany('App\Models\Order','customer_id','id');
+    }
+
+    // user yang memiliki 1 order hanya technician
+    public function order(){
+        return $this->hasOne('App\Models\Order','technician_id','id');
     }
 
     /*

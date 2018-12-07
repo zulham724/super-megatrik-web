@@ -48,8 +48,8 @@ class Order extends Model
         return $this->hasMany('App\Models\Material');
     }
 
-    public function order_statuses(){
-        return $this->hasMany('App\Models\OrderStatus');
+    public function order_status(){
+        return $this->hasOne('App\Models\OrderStatus');
     }
 
     /*

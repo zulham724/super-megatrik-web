@@ -54,4 +54,6 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		"contentlists"=>"ContentlistController",
 
 	]);
+
+	Route::get('drivers/{id}/ordernotcompleted','UserController@drivers');
 });
