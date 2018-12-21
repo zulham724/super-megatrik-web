@@ -38,6 +38,11 @@ class ContentList extends Model
         return $this->belongsTo('App\Models\Contentcategory','content_category_id','id');
     }
 
+    public function contents()
+    {
+        return $this->hasMany('App\Models\Content', 'content_list_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

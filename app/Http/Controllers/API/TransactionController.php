@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Orderstatus;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
+use App\Models\Transactionstatus;
+use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
@@ -29,7 +31,19 @@ class TransactionController extends Controller
     {
         $transaction = new Transaction;
         $transaction->fill($request->all());
+        $transaction->transaction_number = "TR-".$request->order_id;
         $transaction->save();
+        
+        $transaction_status = new Transactionstatus;
+        $transaction_status->transaction_id = $transaction->id;
+        $transaction_status->is_paid = 1;
+        $transaction_status->save();
+
+        // $order_status = Orderstatus::where('order_id', $request->order_id)
+        // ->update([
+        //     'is_completed' => 1
+        // ]);
+
         return response()->json($transaction);
     }
 

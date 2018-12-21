@@ -41,7 +41,8 @@ class ServicecategoryController extends Controller
      */
     public function show($id)
     {
-        $servicecategory = Servicecategory::find($id);
+        $servicecategory = Servicecategory::with('servicelists')
+                            ->find($id);
         return response()->json($servicecategory);
     }
 

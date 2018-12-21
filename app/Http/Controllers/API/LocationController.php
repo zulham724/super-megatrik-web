@@ -54,7 +54,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $location = Location::find($id);
+        $location = Location::where('user_id', $id)->first();
         $location->fill($request->all());
         $location->save();
         return response()->json($location);

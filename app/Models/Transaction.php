@@ -38,6 +38,11 @@ class Transaction extends Model
         return $this->belongsTo('App\Models\Order');
     }
 
+    public function transactionstatus()
+    {
+        return $this->hasOne('App\Models\Transactionstatus', 'transaction_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

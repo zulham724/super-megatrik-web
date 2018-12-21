@@ -49,7 +49,7 @@ class Order extends Model
     }
 
     public function order_status(){
-        return $this->hasOne('App\Models\OrderStatus');
+        return $this->hasOne('App\Models\Orderstatus');
     }
 
     /*

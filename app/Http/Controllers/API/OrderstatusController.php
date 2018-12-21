@@ -54,7 +54,7 @@ class OrderstatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $orderstatus = Orderstatus::find($id);
+        $orderstatus = Orderstatus::where('order_id', $id)->first();
         $orderstatus->fill($request->all());
         $orderstatus->save();
         return response()->json($orderstatus);

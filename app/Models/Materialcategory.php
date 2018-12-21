@@ -35,6 +35,11 @@ class MaterialCategory extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function materiallists()
+    {
+        return $this->hasMany('App\Models\Materiallist', 'material_category_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

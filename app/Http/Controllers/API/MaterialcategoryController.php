@@ -41,7 +41,7 @@ class MaterialcategoryController extends Controller
      */
     public function show($id)
     {
-        $materialcategory = Materialcategory::find($id);
+        $materialcategory = Materialcategory::with('materiallists')->find($id);
         return response()->json($materialcategory);
     }
 

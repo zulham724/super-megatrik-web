@@ -41,7 +41,7 @@ class ContentlistController extends Controller
      */
     public function show($id)
     {
-        $contentlist = Contentlist::find($id);
+        $contentlist = Contentlist::with('contents')->find($id);
         return response()->json($contentlist);
     }
 

@@ -48,6 +48,11 @@ class User extends Model
         return $this->hasMany('App\Models\Order','technician_id','id');
     }
 
+    public function location()
+    {
+        return $this->hasOne('App\Models\Location','user_id','id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

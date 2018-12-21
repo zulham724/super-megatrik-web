@@ -59,5 +59,10 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 	Route::get('drivers/{id}/ordercompleted','DriverController@ordercompleted');
 
 	Route::get('order/notaccepted','OrderController@notaccepted');
-	Route::post('order/accept','OrderController@accept');
+	Route::post('order/accept/{id}','OrderController@accept');
+	Route::patch('order/kerjakan/{id}', 'OrderController@kerjakan');
+	Route::patch('order/selesai/{id}', 'OrderController@selesai');
+
+	Route::get('orders/{id}/{city_name}', 'OrderController@show');
+	Route::get('order/materials/{id}', 'OrderController@materials');
 });

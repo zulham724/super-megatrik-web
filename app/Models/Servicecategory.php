@@ -35,6 +35,11 @@ class ServiceCategory extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function servicelists()
+    {
+        return $this->hasMany('App\Models\Servicelist', 'service_category_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

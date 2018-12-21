@@ -31,6 +31,13 @@ class UserController extends Controller
         $user->fill($request->all());
         $user->password = bcrypt($request['password']);
         $user->save();
+
+        $user_location = [
+            'state_id' => 1,
+            'city_id' => 1,
+            'district_id' => 1
+        ];
+        $location = $user->location()->create($user_location);
         return response()->json($user);
     }
 
@@ -42,8 +49,15 @@ class UserController extends Controller
      */
     public function show($id,$relation)
     {
-        $user = User::with($relation)->find($id);
-        return response()->json($user);
+        if ($relation == 'customer_orders') {
+            $user = User::with(['customer_orders' => function($query){
+                $query->join('order_statuses', 'order_statuses.order_id', '=', 'orders.id');
+                $query->with(['materials' => function($query2){
+                    $query2->join('material_lists', 'materials.material_list_id', '=', 'material_lists.id');
+                }, 'technician']);
+            }])->find($id);
+            return response()->json($user);
+        }
     }
 
     /**
