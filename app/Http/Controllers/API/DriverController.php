@@ -64,29 +64,27 @@ class DriverController extends Controller
     }
 
     public function ordernotcompleted($id){
-        $driver = User::
-        with('technician_orders.customer')
-        ->with(['technician_orders.order_status'=>function($query){
-            $query->where('is_completed',0);
-        }])
-        ->whereHas('technician_orders.order_status',function($query){
-           $query->where('is_completed',0); 
-        })
-        ->find($id);
+        $driver = User::with(['technician_orders' => function($query){
+            $query->with(['order_status' => function($query2){
+                $query2->where('is_completed', 0);
+            }, 'customer']);
+            $query->whereHas('order_status', function($query2){
+                $query2->where('is_completed', 0);
+            });
+        }])->find($id);
 
         return response()->json($driver);
     }
 
     public function ordercompleted($id){
-        $driver = User::
-        with('technician_orders.customer')
-        ->with(['technician_orders.order_status'=>function($query){
-            $query->where('is_completed',1);
-        }])
-        ->whereHas('technician_orders.order_status',function($query){
-           $query->where('is_completed',1); 
-        })
-        ->find($id);
+        $driver = User::with(['technician_orders' => function($query){
+            $query->with(['order_status' => function($query2){
+                $query2->where('is_completed', 1);
+            }, 'customer']);
+            $query->whereHas('order_status', function($query2){
+                $query2->where('is_completed', 1);
+            });
+        }])->find($id);
 
         return response()->json($driver);
     }

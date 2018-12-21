@@ -7,7 +7,9 @@ use App\Models\Order;
 use App\Models\Service;
 use App\Models\Orderstatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use OneSignal;
 
 class OrderController extends Controller
 {
@@ -77,9 +79,14 @@ class OrderController extends Controller
             })
             ->where('role_id', 2)
             ->first();
+            if ($coor->no_hp != null && substr($coor->no_hp, 0, 1) == "0") {
+                $coor->no_hp = ltrim($coor->no_hp, "0");
+                $coor->no_hp = "62".$coor->no_hp;
+            }
             return response()->json($coor);
+        }else {
+            return json_encode(null);
         }
-        return response()->json((object) []);
     }
 
     /**
@@ -138,9 +145,8 @@ class OrderController extends Controller
     public function kerjakan(Request $request, $id)
     {
         $order = Order::find($id);
-        $order->fill([
-            'order_start' => date('Y-m-d H:i:s')
-        ]);
+        $now = DB::raw('NOW()');
+        $order->order_start = $now;
         $order->update();
 
         return response()->json($order);
@@ -149,9 +155,8 @@ class OrderController extends Controller
     public function selesai(Request $request, $id)
     {
         $order = Order::find($id);
-        $order->fill([
-            'order_end' => date('Y-m-d H:i:s')
-        ]);
+        $now = DB::raw('NOW()');
+        $order->order_end = $now;
         $order->update();
         $order->order_status->update(['is_completed' => 1]);
 
@@ -160,9 +165,7 @@ class OrderController extends Controller
 
     public function materials($id)
     {
-        $order = Order::with(['materials' => function($query){
-            $query->join('material_lists', 'materials.material_list_id', '=', 'material_lists.id');
-        }])->find($id);
+        $order = Order::with('materials.materiallist')->find($id);
         return response()->json($order);
     }
 
@@ -191,7 +194,9 @@ class OrderController extends Controller
         foreach ($technicians as $user) {
             $distance = $this->distance($lat, $lng, $user->location->latitude, $user->location->longitude);
             if (($distance+0.200) < 5) {
-                OneSignal::sendNotificationToUser(
+                $headings = [];
+                $headings['en'] = 'New Order!';
+                OneSignal::setParam('headings', $headings)->sendNotificationToUser(
                     "Order baru telah tersedia. Bid Sekarang!",
                     $user->os_player_id,
                     $url = null,

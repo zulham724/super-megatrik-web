@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Orderstatus;
 use App\Models\Transaction;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Transactionstatus;
 use App\Http\Controllers\Controller;
@@ -29,9 +30,23 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $total = 0;
+        $order = Order::with('services.servicelist', 'materials.materiallist')->find($request->order_id);
+
+        foreach ($order->services as $service) {
+            $total += $service->servicelist->price;
+        }
+
+        foreach ($order->materials as $material) {
+            $total += $material->materiallist->price*$material->quantity;
+        }
+
+        // return response()->json($total);
+
         $transaction = new Transaction;
         $transaction->fill($request->all());
         $transaction->transaction_number = "TR-".$request->order_id;
+        $transaction->total = $total;
         $transaction->save();
         
         $transaction_status = new Transactionstatus;

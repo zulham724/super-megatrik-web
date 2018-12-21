@@ -52,6 +52,11 @@ class Order extends Model
         return $this->hasOne('App\Models\Orderstatus');
     }
 
+    public function transaction()
+    {
+        return $this->hasOne('App\Models\Transaction', 'order_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
