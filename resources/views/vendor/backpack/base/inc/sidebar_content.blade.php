@@ -63,3 +63,4 @@
     </ul>
 </li>
 <li><a href='{{ backpack_url('oauthclient') }}'><i class='fa fa-tag'></i> <span>Oauth Client</span></a></li>
+<li><a href='{{ backpack_url('transactionreview') }}'><i class='fa fa-tag'></i> <span>Transaction Reviews</span></a></li>

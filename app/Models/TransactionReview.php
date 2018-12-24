@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Transaction extends Model
+class TransactionReview extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Transaction extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'transactions';
+    protected $table = 'transaction_reviews';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -34,18 +34,9 @@ class Transaction extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    public function order(){
-        return $this->belongsTo('App\Models\Order');
-    }
-
-    public function transactionstatus()
+    public function transaction()
     {
-        return $this->hasOne('App\Models\Transactionstatus', 'transaction_id', 'id');
-    }
-
-    public function transactionreview()
-    {
-        return $this->hasOne('App\Models\TransactionReview', 'transaction_id', 'id');
+        return $this->belongsTo('App\Models\Transaction');
     }
 
     /*

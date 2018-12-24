@@ -47,6 +47,7 @@ Route::group(['middleware'=>'auth:api','namespace'=>'API'],function(){
 		"statuses"=>"StatusController",
 		"transactions"=>"TransactionController",
 		"transactionstatuses"=>"TransactionstatusController",
+		"transactionreviews"=>"TransactionReviewController",
 		"userstates"=>"UserstateController",
 		"userstatuses"=>"UserstatusController",
 		"contents"=>"ContentController",

@@ -70,7 +70,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::with('transactionstatus', 'transactionreview')->find($id);
         return response()->json($transaction);
     }
 
