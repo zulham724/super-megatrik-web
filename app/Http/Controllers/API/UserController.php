@@ -53,7 +53,7 @@ class UserController extends Controller
             $user = User::with(['customer_orders' => function($query){
                 $query->with(['transaction', 'order_status', 'materials' => function($query2){
                     $query2->join('material_lists', 'materials.material_list_id', '=', 'material_lists.id');
-                }, 'technician']);
+                }, 'technician', 'services.servicelist']);
             }])->find($id);
             return response()->json($user);
         }

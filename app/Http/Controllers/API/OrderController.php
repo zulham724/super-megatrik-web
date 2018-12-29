@@ -59,7 +59,9 @@ class OrderController extends Controller
     public function show($id, $cityname=null)
     {
         if ($cityname == null) {
-            $order = Order::with('customer','order_status', 'services.servicelist')->find($id);
+            $order = Order::with('customer','order_status', 'services.servicelist', 
+                    'materials.materiallist', 'technician', 'transaction')
+                    ->find($id);
             return response()->json($order);
         }
         // $cityname = urldecode($cityname);
@@ -79,11 +81,13 @@ class OrderController extends Controller
             })
             ->where('role_id', 2)
             ->first();
-            if ($coor->no_hp != null && substr($coor->no_hp, 0, 1) == "0") {
-                $coor->no_hp = ltrim($coor->no_hp, "0");
-                $coor->no_hp = "62".$coor->no_hp;
+            if ($coor != null) {
+                if (substr($coor->no_hp, 0, 1) == "0") {
+                    $coor->no_hp = ltrim($coor->no_hp, "0");
+                    $coor->no_hp = "62".$coor->no_hp;
+                }
+                return response()->json($coor);
             }
-            return response()->json($coor);
         }else {
             return json_encode(null);
         }

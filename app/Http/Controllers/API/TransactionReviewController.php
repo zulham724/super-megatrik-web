@@ -41,7 +41,7 @@ class TransactionReviewController extends Controller
      */
     public function show($id)
     {
-        $transactionreview = TransactionReview::find($id);
+        $transactionreview = TransactionReview::findOrFail($id);
         return response()->json($transactionreview);
     }
 
