@@ -158,8 +158,14 @@ class OrderController extends Controller
 
     public function selesai(Request $request, $id)
     {
-        $order = Order::find($id);
+        $order = Order::with('transaction')->find($id);
         $now = DB::raw('NOW()');
+        if ($order->transaction == null) {
+            return response()->json([
+                'error' => 'Not Acceptable',
+                'message' => 'Customer belum melakukan pembayaran'
+            ], 406);
+        }
         $order->order_end = $now;
         $order->update();
         $order->order_status->update(['is_completed' => 1]);
