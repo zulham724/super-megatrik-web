@@ -197,7 +197,7 @@ class OrderController extends Controller
 
         foreach ($technicians as $user) {
             $distance = $this->distance($lat, $lng, $user->location->latitude, $user->location->longitude);
-            if (($distance+0.200) < 5) {
+            if (($distance+0.200) < 5 && $user->os_player_id != null) {
                 $headings = [];
                 $headings['en'] = 'New Order!';
                 OneSignal::setParam('headings', $headings)->sendNotificationToUser(
