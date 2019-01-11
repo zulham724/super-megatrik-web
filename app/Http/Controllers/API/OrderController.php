@@ -124,6 +124,7 @@ class OrderController extends Controller
 
     public function notaccepted(){
         $orders = Order::with('customer')
+        ->with('services')
         ->with(['order_status'=>function($query){
             $query->where('is_accepted',0);
         }])
